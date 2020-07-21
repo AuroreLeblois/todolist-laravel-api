@@ -19,3 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/todolist', 'TodoController@get');
+Route::post('/todolist/add', 'TodoController@post');
+Route::delete('/todolist/delete/{id}', 'TodoController@delete');
