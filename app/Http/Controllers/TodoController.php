@@ -27,7 +27,7 @@ class TodoController extends Controller {
            // Récupération des actions non traitées
            $todoList = DB::select('SELECT * FROM task ORDER BY id');
 
-           $response = ['success' => true, 'todoList' => $todoList];
+           $response =  $todoList;
        } catch (Exception $e) {
            $response = ['success' => false, 'message' => $e->getMessage(), 'line' => $e->getLine()];
        }
@@ -37,15 +37,15 @@ class TodoController extends Controller {
    public function post(Request $request) {
      $response=[];
        try {
-         $title=$_POST['title'];
-         $description=$_POST['description'];
+         $title=$request->title;
+         $description=$request->description;
            //mettre les valeurs dans la DataBase
            $newTask= DB::insert('INSERT INTO task (title, description)VALUES(?,?)', [$title, $description]);
            // Récupération de la todolist
 
            $todoList = DB::select('SELECT * FROM task ORDER BY id');
 
-           $response = ['success' => true, 'todoList' => $todoList];
+           $response = $todoList;
        } catch (Exception $e) {
            $response = ['success' => false, 'message' => $e->getMessage(), 'line' => $e->getLine()];
        }
@@ -60,7 +60,7 @@ class TodoController extends Controller {
            // Récupération de la todolist
            $todoList = DB::select('SELECT * FROM task ORDER BY id');
 
-           $response = ['success' => true, 'todoList' => $todoList];
+           $response = $todoList;
        } catch (Exception $e) {
            $response = ['success' => false, 'message' => $e->getMessage(), 'line' => $e->getLine()];
        }
