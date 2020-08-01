@@ -27,7 +27,7 @@ class TodoController extends Controller {
            // Récupération des actions non traitées
            $todoList = DB::select('SELECT * FROM task ORDER BY id');
 
-           $response =  $todoList;
+            $response = ['success' => true, 'todolist'=> $todoList];
        } catch (Exception $e) {
            $response = ['success' => false, 'message' => $e->getMessage(), 'line' => $e->getLine()];
        }
@@ -45,7 +45,7 @@ class TodoController extends Controller {
 
            $todoList = DB::select('SELECT * FROM task ORDER BY id');
 
-           $response = $todoList;
+            $response = ['success' => true, 'todolist'=> $todoList];
        } catch (Exception $e) {
            $response = ['success' => false, 'message' => $e->getMessage(), 'line' => $e->getLine()];
        }
@@ -60,7 +60,7 @@ class TodoController extends Controller {
            // Récupération de la todolist
            $todoList = DB::select('SELECT * FROM task ORDER BY id');
 
-           $response = $todoList;
+            $response = ['success' => true, 'todolist'=> $todoList];
        } catch (Exception $e) {
            $response = ['success' => false, 'message' => $e->getMessage(), 'line' => $e->getLine()];
        }
